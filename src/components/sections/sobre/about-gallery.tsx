@@ -83,7 +83,7 @@ export default function AboutGallery() {
 
       <div ref={viewportRef} className="flex-1 overflow-hidden">
         <motion.div
-          className="flex"
+          className="flex items-start"
           animate={{ x: -clampedIndex * step }}
           transition={{ type: "spring", stiffness: 260, damping: 34 }}
         >
@@ -91,7 +91,12 @@ export default function AboutGallery() {
             <div
               key={i}
               className="relative flex-shrink-0 rounded-[24px] overflow-hidden"
-              style={{ width: slideW || "calc(50% - 6px)", aspectRatio: "1 / 1", marginRight: GAP }}
+              style={{
+                width: slideW || "calc(50% - 6px)",
+                height: slideW || undefined,
+                aspectRatio: slideW ? undefined : "1 / 1",
+                marginRight: GAP,
+              }}
             >
               <img
                 src={s.img}

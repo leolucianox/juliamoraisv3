@@ -28,7 +28,7 @@ export default function Footer() {
         >
           &ldquo;Tatuagem boa é a que carrega uma história — e que envelhece bem com quem a carrega.&rdquo;
         </p>
-        <div className="grid gap-1.5 mt-6 sm:flex sm:flex-wrap sm:justify-start sm:gap-2" style={{ gridTemplateColumns: "repeat(3, max-content)", justifyContent: "space-between" }}>
+        <div className="grid grid-cols-[repeat(3,max-content)] justify-between gap-1.5 mt-6 sm:flex sm:flex-wrap sm:justify-start sm:gap-2">
           {styles.map((d) => (
             <span
               key={d}
@@ -53,7 +53,7 @@ export default function Footer() {
             style={{
               fontFamily: "var(--font-display)",
               fontWeight: 800,
-              fontSize: "max(40px, 15cqw)",
+              fontSize: "clamp(40px, 15cqw, 130px)",
               letterSpacing: "-0.018em",
               lineHeight: 0.9,
               color: "#000",
