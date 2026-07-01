@@ -69,15 +69,16 @@ export default function InstagramPreview() {
               className="text-white"
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(13px, 1.6vw, 22px)",
+                fontSize: "clamp(12px, 1.4vw, 19px)",
                 fontWeight: 800,
                 lineHeight: 1.15,
                 maxWidth: "100%",
                 textAlign: "left",
-                overflowWrap: "break-word",
               }}
             >
-              {HANDLE_USER}<br />{HANDLE_REST}
+              <span style={{ whiteSpace: "nowrap" }}>{HANDLE_USER}</span>
+              <br />
+              {HANDLE_REST}
             </h2>
           </motion.a>
 
