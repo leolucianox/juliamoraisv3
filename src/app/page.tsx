@@ -1,46 +1,43 @@
 import Hero from "@/components/sections/hero";
 import Ticker from "@/components/ticker";
-import Location from "@/components/sections/location";
-import AllInclusive from "@/components/sections/all-inclusive";
-import OurSpaces from "@/components/sections/our-spaces";
-import Social from "@/components/sections/social";
-import NewsletterSection from "@/components/newsletter-section";
+import AboutPreview from "@/components/sections/about-preview";
+import WorkPreview from "@/components/sections/work-preview";
+import InstagramPreview from "@/components/sections/instagram-preview";
 import Footer from "@/components/sections/footer";
 
 export default function Home() {
   return (
     <main className="flex flex-col gap-3 p-3">
       <Hero />
-      <Location />
+      <AboutPreview />
       <Ticker
-        bg="#ee5a6a"
-        color="#1a3688"
+        bg="#1a1a1a"
+        color="#f7f5f2"
         items={[
-          "24/7 Security",
-          "Fast and reliable maintenance",
-          "Smart living",
-          "Social areas",
-          "Private kitchen & bathroom",
+          "Fine Line",
+          "Delicadas",
+          "Minimalista",
+          "Botânica",
+          "Pontilhismo",
+          "Autoral",
         ]}
       />
-      <AllInclusive />
+      <WorkPreview />
       <Ticker
-        bg="#e5392a"
-        color="#f4e9e1"
+        bg="#e63329"
+        color="#f7f5f2"
         items={[
-          "Home",
-          "Smart living",
-          "Social areas",
-          "Private kitchen & bathroom",
-          "24/7 Security",
-          "Fast and reliable maintenance",
+          "8 anos tatuando",
+          "São Paulo",
+          "Fine line especialista",
+          "Agendamento fácil",
+          "Materiais descartáveis",
+          "Tatuagens autorais",
         ]}
         duration={26}
       />
-      <OurSpaces />
-      <Social />
+      <InstagramPreview />
       <div className="h-4" />
-      <NewsletterSection />
       <Footer />
     </main>
   );

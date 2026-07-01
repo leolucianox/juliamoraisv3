@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Plus_Jakarta_Sans } from "next/font/google";
+import { DM_Sans, Syne } from "next/font/google";
 import "./globals.css";
 import SidebarNav from "@/components/sidebar-nav";
 
@@ -9,16 +9,16 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "700"],
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-jakarta",
+  variable: "--font-syne",
   weight: ["700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Round — Unique Student Homes",
+  title: "Julia Morais — Tatuagens Fine Line",
   description:
-    "All-inclusive student accommodation with everything you need to live, study and connect.",
+    "Julia Morais é tatuadora em São Paulo, especializada em fine line e tatuagens delicadas. 8 anos de experiência, agendamento pelo WhatsApp.",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${plusJakarta.variable}`}>
+    <html lang="pt" className={`${dmSans.variable} ${syne.variable}`}>
       <body>
         <SidebarNav />
         <div className="ml-0 lg:ml-[232px]">{children}</div>

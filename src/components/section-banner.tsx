@@ -8,7 +8,7 @@ interface SectionBannerProps {
   color?: string;
 }
 
-export default function SectionBanner({ title, bg = "#ee5a6a", color = "#000" }: SectionBannerProps) {
+export default function SectionBanner({ title, bg = "#e63329", color = "#fff" }: SectionBannerProps) {
   return (
     <motion.div
       className="relative w-full flex items-center justify-center rounded-full py-4"
@@ -20,7 +20,7 @@ export default function SectionBanner({ title, bg = "#ee5a6a", color = "#000" }:
     >
       <span
         className="font-extrabold tracking-tight"
-        style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px, 2.6vw, 36px)", color }}
+        style={{ fontFamily: "var(--font-display)", fontSize: "clamp(16px, 1.6vw, 26px)", color }}
       >
         {title}
       </span>

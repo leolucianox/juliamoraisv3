@@ -2,16 +2,17 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { PHOTOS } from "@/lib/images";
 
 const GAP = 12;
 
-const spaces = [
-  { label: "Lounge", bg: `radial-gradient(ellipse at 40% 45%, rgba(0,160,90,0.75) 0%, transparent 55%), radial-gradient(ellipse at 78% 72%, rgba(245,197,0,0.45) 0%, transparent 45%), #0d5a3a` },
-  { label: "Hall", bg: `radial-gradient(ellipse at 50% 42%, rgba(240,120,40,0.6) 0%, transparent 55%), radial-gradient(ellipse at 30% 75%, rgba(26,54,136,0.5) 0%, transparent 50%), #241810` },
-  { label: "Co-working", bg: `radial-gradient(ellipse at 45% 50%, rgba(26,82,214,0.6) 0%, transparent 55%), radial-gradient(ellipse at 72% 62%, rgba(0,201,90,0.4) 0%, transparent 50%), #122a4a` },
-  { label: "Laundry room", bg: `radial-gradient(ellipse at 50% 45%, rgba(26,143,214,0.75) 0%, transparent 55%), radial-gradient(ellipse at 76% 76%, rgba(245,197,0,0.55) 0%, transparent 45%), #14365a` },
-  { label: "Gym", bg: `radial-gradient(ellipse at 42% 42%, rgba(200,40,60,0.6) 0%, transparent 55%), radial-gradient(ellipse at 70% 70%, rgba(245,130,15,0.45) 0%, transparent 50%), #1a1014` },
-  { label: "Study room", bg: `radial-gradient(ellipse at 55% 45%, rgba(245,160,60,0.6) 0%, transparent 55%), radial-gradient(ellipse at 35% 72%, rgba(60,90,60,0.5) 0%, transparent 50%), #2a1e12` },
+const works = [
+  { label: "Fine Line", img: PHOTOS.wristFine1 },
+  { label: "Detalhe", img: PHOTOS.wristFine2 },
+  { label: "Delicada", img: PHOTOS.handFine },
+  { label: "Sessão", img: PHOTOS.session1 },
+  { label: "Processo", img: PHOTOS.session2 },
+  { label: "Foco", img: PHOTOS.session3 },
 ];
 
 const VISIBLE_DESKTOP = 2;
@@ -33,7 +34,7 @@ function NavButton({ dir, onClick, disabled }: { dir: "prev" | "next"; onClick: 
   );
 }
 
-export default function ShCommunity() {
+export default function TrGallery() {
   const viewportRef = useRef<HTMLDivElement>(null);
   const [vw, setVw] = useState(0);
   const [index, setIndex] = useState(0);
@@ -48,16 +49,15 @@ export default function ShCommunity() {
   }, []);
 
   const visibleCount = vw > 640 ? VISIBLE_DESKTOP : VISIBLE_MOBILE;
-  const maxIndex = spaces.length - visibleCount;
+  const maxIndex = works.length - visibleCount;
   const clampedIndex = Math.min(index, maxIndex);
   const slideW = vw > 0 ? (vw - GAP * (visibleCount - 1)) / visibleCount : 0;
   const step = slideW + GAP;
 
   return (
-    <section className="w-full rounded-[32px] p-3 flex flex-col lg:flex-row gap-3 lg:items-stretch" style={{ backgroundColor: "#1a52d6", scrollSnapAlign: "start" }}>
-      {/* Left: text — stretches to match carousel height automatically */}
+    <section className="w-full rounded-[32px] p-3 flex flex-col lg:flex-row gap-3 lg:items-stretch" style={{ backgroundColor: "#2255cc", scrollSnapAlign: "start" }}>
       <motion.div
-        className="w-full lg:w-[30%] flex flex-col justify-between gap-6 p-6"
+        className="w-full lg:w-[30%] flex flex-col justify-between gap-3 lg:gap-6 p-6"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -65,42 +65,39 @@ export default function ShCommunity() {
       >
         <div>
           <h2 className="text-white leading-[0.98] mb-5" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px, 2.6vw, 42px)", fontWeight: 800 }}>
-            Community<br />Living Spaces
+            Mais<br />trabalhos
           </h2>
           <p className="text-white/75 leading-relaxed mb-6" style={{ fontSize: "clamp(15px, 1vw, 17px)", maxWidth: 320 }}>
-            Social areas to relax and connect, a self-service laundry room that makes
-            life easier, and a fully equipped gym with 24/7 access — so you never lose
-            your rhythm.
+            Uma amostra maior do que já tatuei — do primeiro esboço à cicatrização, sempre com muito cuidado em cada detalhe.
           </p>
         </div>
 
-        {/* Carousel controls */}
         <div className="flex items-center gap-2.5">
           <NavButton dir="prev" onClick={() => setIndex((i) => Math.max(0, i - 1))} disabled={clampedIndex === 0} />
           <NavButton dir="next" onClick={() => setIndex((i) => Math.min(maxIndex, i + 1))} disabled={clampedIndex === maxIndex} />
         </div>
       </motion.div>
 
-      {/* Right: 2-up carousel — height driven by square cards */}
       <div ref={viewportRef} className="flex-1 overflow-hidden">
         <motion.div
           className="flex"
           animate={{ x: -clampedIndex * step }}
           transition={{ type: "spring", stiffness: 260, damping: 34 }}
         >
-          {spaces.map((s, i) => (
+          {works.map((d, i) => (
             <div
               key={i}
               className="relative flex-shrink-0 rounded-[24px] overflow-hidden"
-              style={{
-                width: slideW || "calc(50% - 6px)",
-                aspectRatio: "1 / 1",
-                marginRight: GAP,
-                background: s.bg,
-              }}
+              style={{ width: slideW || "calc(50% - 6px)", aspectRatio: "1 / 1", marginRight: GAP }}
             >
+              <img
+                src={d.img}
+                alt={d.label}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+              <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.3)" }} />
               <span className="absolute top-4 left-4 rounded-full px-3 py-1 text-[13px] font-bold" style={{ backgroundColor: "rgba(255,255,255,0.9)", color: "#000" }}>
-                {s.label}
+                {d.label}
               </span>
             </div>
           ))}

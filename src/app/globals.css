@@ -1,16 +1,14 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-cream: #f4e9e1;
-  --color-blue-nav: #1a3688;
-  --color-yellow-nav: #f5c500;
-  --color-orange-nav: #f04a00;
-  --color-green-nav: #00c95a;
-  --color-purple-cta: #7a3cf0;
-  --color-yellow-loc: #f5c000;
-  --color-red-nl: #e01f26;
+  --color-bg: #f7f5f2;
+  --color-nav-1: #1a1a1a;
+  --color-nav-2: #e63329;
+  --color-nav-3: #2255cc;
+  --color-nav-4: #f0c419;
+  --color-cta: #e63329;
   --font-body: var(--font-dm-sans), "DM Sans", Arial, sans-serif;
-  --font-display: var(--font-jakarta), "Plus Jakarta Sans", "Arial Black", sans-serif;
+  --font-display: var(--font-syne), "Syne", "Arial Black", sans-serif;
 }
 
 html {
@@ -20,9 +18,6 @@ html {
   scroll-padding-top: 12px;
 }
 
-/* Below the lg breakpoint the desktop full-screen panels stack and grow with
-   their content, so the proximity scroll-snap fights natural scrolling — turn it
-   off and let sections flow. Desktop (>=1024px) keeps the snapping behaviour. */
 @media (max-width: 1023px) {
   html {
     scroll-snap-type: none;
@@ -30,7 +25,7 @@ html {
 }
 
 body {
-  background-color: #f4e9e1;
+  background-color: #f7f5f2;
   font-family: var(--font-body);
   color: #000;
   overflow-x: hidden;

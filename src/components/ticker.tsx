@@ -21,8 +21,10 @@ const Flower = ({ color }: { color: string }) => (
   </svg>
 );
 
+const REPEAT_COUNT = 8;
+
 export default function Ticker({ items, bg, color, duration = 24 }: TickerProps) {
-  const repeated = [...items, ...items];
+  const repeated = Array.from({ length: REPEAT_COUNT }, () => items).flat();
 
   return (
     <div
@@ -31,7 +33,7 @@ export default function Ticker({ items, bg, color, duration = 24 }: TickerProps)
     >
       <motion.div
         className="flex items-center whitespace-nowrap"
-        animate={{ x: ["0%", "-50%"] }}
+        animate={{ x: ["0%", `-${100 / REPEAT_COUNT}%`] }}
         transition={{ duration, ease: "linear", repeat: Infinity }}
       >
         {repeated.map((item, i) => (
